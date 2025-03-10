@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unblocked Proxy</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px; 
+        }
+        input { 
+            padding: 10px; 
+            font-size: 16px; 
+            width: 80%; 
+            max-width: 400px; 
+        }
+        button { 
+            padding: 10px 15px; 
+            font-size: 16px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Unblocked Proxy</h1>
+    
+    <form onsubmit="goToProxy(event)">
+        <input type="text" id="urlInput" placeholder="Enter website URL" required>
+        <button type="submit">Go</button>
+    </form>
+
+    <script>
+        function goToProxy(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+            
+            let url = document.getElementById('urlInput').value.trim();
+
+            if (!url) {
+                alert("Please enter a valid URL");
+                return;
+            }
+
+            // Add "https://" if missing
+            if (!url.match(/^https?:\/\//)) {
+                url = 'https://' + url;
+            }
+
+            // Redirect to proxy
+            window.location.href = `/proxy/?url=${encodeURIComponent(url)}`;
+        }
+    </script>
+</body>
+</html>
